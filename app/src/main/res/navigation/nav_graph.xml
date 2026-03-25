@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_productDetailFragment"
-            app:destination="@id/productDetailFragment" />
+            app:destination="@id/productDetailFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
@@ -35,7 +37,9 @@
         tools:layout="@layout/fragment_shop" >
         <action
             android:id="@+id/action_shopFragment_to_productDetailFragment"
-            app:destination="@id/productDetailFragment" />
+            app:destination="@id/productDetailFragment"
+            app:popUpTo="@id/shopFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/wishlistFragment"
@@ -44,7 +48,9 @@
         tools:layout="@layout/fragment_wishlist" >
         <action
             android:id="@+id/action_wishlistFragment_to_productDetailFragment"
-            app:destination="@id/productDetailFragment" />
+            app:destination="@id/productDetailFragment"
+            app:popUpTo="@id/wishlistFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/productDetailFragment"

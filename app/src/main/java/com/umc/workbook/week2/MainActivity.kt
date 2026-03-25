@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.umc.workbook.week2.databinding.ActivityMainBinding
+import androidx.navigation.ui.NavigationUI
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -30,8 +31,13 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.main_fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
 
-        // BottomNav와 NavController 연결
-        binding.mainBnv.setupWithNavController(navController)
+        binding.mainBnv.setOnItemSelectedListener { item ->
+            while (navController.currentDestination?.id == R.id.productDetailFragment) {
+                navController.popBackStack()
+            }
+            NavigationUI.onNavDestinationSelected(item, navController)
+            true
+        }
     }
 
 }
