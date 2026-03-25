@@ -31,15 +31,15 @@ class ShopFragment : Fragment() {
                 "Training Ankle Socks (6 Pairs)", "5 Colours", "US\$10", isBestSeller = false
             ),
             ShopProductData(
-                R.drawable.product2, "Nike Elite Crew",
+                R.drawable.product3, "Nike Elite Crew",
                 "Basketball Socks", "7 Colours", "US\$16", isBestSeller = false
             ),
             ShopProductData(
-                R.drawable.product3, "Nike Air Force 1 '07",
+                R.drawable.product2, "Nike Air Force 1 '07",
                 "Women's Shoes", "5 Colours", "US\$115", isBestSeller = true
             ),
             ShopProductData(
-                R.drawable.product3, "Jordan ENike Air Force 1 '07ssentials",
+                R.drawable.product2, "Jordan ENike Air Force 1 '07ssentials",
                 "Men's Shoes", "2 Colours", "US\$115", isBestSeller = true
             ),
         )

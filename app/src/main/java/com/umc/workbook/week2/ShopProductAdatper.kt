@@ -50,10 +50,17 @@ class ShopProductViewHolder(val binding: ItemShopProductBinding):
                 binding.tvBestSeller.visibility = View.GONE
             }
 
-            if (product.isWishlisted){
-                binding.ivWish.setImageResource(R.drawable.ic_heart_filled)
-            } else {
-                binding.ivWish.setImageResource(R.drawable.ic_heart_blank)
+            var isWishlisted = product.isWishlisted
+            // 토글
+            binding.ivWish.setOnClickListener {
+                isWishlisted = !isWishlisted
+                updateHeart(isWishlisted)
             }
+        }
+        private fun updateHeart(isWishlisted: Boolean){
+            binding.ivWish.setImageResource(
+                if (isWishlisted) R.drawable.ic_heart_filled
+                else R.drawable.ic_heart_blank
+            )
         }
     }
