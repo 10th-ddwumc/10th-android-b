@@ -6,11 +6,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.umc.workbook.week2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    private val TAG = "LIFE_QUIZ"
+    private val TAG = "MAIN"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,74 +24,14 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-//        Log.d(TAG, "onCreate")
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main_fragment_container, HomeFragment())
-            .commit()
+        // NavGraph로 수정
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.main_fragment_container) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        // Fragment 변경
-        binding.mainBnv.setOnItemSelectedListener { item ->
-            when(item.itemId){
-                R.id.homeFragment -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_fragment_container, HomeFragment())
-                        .commit()
-                    true
-                }
-                R.id.shopFragment -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_fragment_container, ShopFragment())
-                        .commit()
-                    true
-                }
-                R.id.wishlistFragment -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_fragment_container, WishlistFragment())
-                        .commit()
-                    true
-                }
-                R.id.cartFragment -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_fragment_container, CartFragment())
-                        .commit()
-                    true
-                }
-                R.id.profileFragment -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_fragment_container, ProfileFragment())
-                        .commit()
-                    true
-                }
-                else -> false
-            }
-        }
+        // BottomNav와 NavController 연결
+        binding.mainBnv.setupWithNavController(navController)
     }
-
-    // 미션 1
-//    override fun onStart() {
-//        super.onStart()
-//        Log.d(TAG, "onStart")
-//    }
-//    override fun onResume() {
-//        super.onResume()
-//        Log.d(TAG, "onResume")
-//    }
-//    override fun onPause() {
-//        super.onPause()
-//        Log.d(TAG, "onPause")
-//    }
-//    override fun onStop() {
-//        super.onStop()
-//        Log.d(TAG, "onStop")
-//    }
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        Log.d(TAG, "onDestroy")
-//    }
-//    override fun onRestart() {
-//        super.onRestart()
-//        Log.d(TAG, "onRestart")
-//    }
 
 }
