@@ -7,7 +7,7 @@ import com.umc.workbook.week2.databinding.ItemNewProductBinding
 
 class NewProductAdapter(
     private val productList: MutableList<ProductData>,
-    private val onItemClicked: (ProductData) -> Unit
+    private val delegate: NewProductDelegate
 ): RecyclerView.Adapter<NewProductViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -24,7 +24,7 @@ class NewProductAdapter(
         val product = productList[position]
         holder.bind(product)
         holder.binding.root.setOnClickListener {
-            onItemClicked(product)
+            delegate.onItemClicked(product)
         }
     }
 

@@ -139,6 +139,7 @@
             android:paddingBottom="16dp"
             android:text="장바구니에 추가"
             android:textColor="#FFFFFF"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSizeSelect" />
@@ -158,6 +159,7 @@
             android:paddingBottom="16dp"
             android:text="위시리스트"
             android:textColor="#000000"
+            android:textStyle="bold"
             app:cornerRadius="100dp"
             app:icon="@drawable/ic_heart_straight"
             app:iconGravity="textEnd"
@@ -194,6 +196,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Nike Everyday Plus Cush..."
+                android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 

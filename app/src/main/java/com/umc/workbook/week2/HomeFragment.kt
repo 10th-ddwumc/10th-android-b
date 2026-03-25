@@ -9,8 +9,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.umc.workbook.week2.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), NewProductDelegate {
     lateinit var binding: FragmentHomeBinding
+
+    override fun onItemClicked(product: ProductData) {
+        findNavController().navigate(R.id.action_homeFragment_to_productDetailFragment)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,10 +33,9 @@ class HomeFragment : Fragment() {
             ProductData(R.drawable.new_product2, "Nike Air Force 1 '07", "US\$115")
         )
 
-        val adapter = NewProductAdapter(productList = newProductList,
-            onItemClicked = { product ->
-                findNavController().navigate(R.id.action_homeFragment_to_productDetailFragment)
-            }
+        val adapter = NewProductAdapter(
+            productList = newProductList,
+            delegate = this
         )
 
         binding.homeRv.adapter = adapter
