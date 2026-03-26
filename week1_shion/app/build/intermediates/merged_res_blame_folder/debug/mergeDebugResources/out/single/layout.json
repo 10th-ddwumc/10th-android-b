@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\SooA\\.gradle\\daemon\\9.3.1\\com.example.week1_emotion.app-mergeDebugResources-34:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\SooA\\.gradle\\daemon\\9.3.1\\com.example.week1_emotion.app-main-37:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "com.example.week1_emotion.app-mergeDebugResources-34:/layout/activity_main.xml",
+        "source": "com.example.week1_emotion.app-main-37:/layout/activity_main.xml"
+    }
+]
