@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.nike.databinding.ProfitFragmentBinding
-import com.example.nike.databinding.ProfitReFragmentBinding
 
 class ProfitFragment : Fragment(R.layout.profit_fragment) {
 
@@ -17,7 +16,7 @@ class ProfitFragment : Fragment(R.layout.profit_fragment) {
 
         binding.btRe.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.main_fragmentContainer, ReProfitFragmnet())
+                .replace(R.id.main_fragmentContainer, ReProfitFragment())
                 .addToBackStack(null)
                 .commit()
         }

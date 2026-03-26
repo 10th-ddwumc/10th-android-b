@@ -2,5 +2,5 @@ package com.example.nike
 
 import androidx.fragment.app.Fragment
 
-class BuyFragmnet : Fragment(R.layout.buy_fragment) {
+class WishFragment : Fragment(R.layout.wish_fragment) {
 }
