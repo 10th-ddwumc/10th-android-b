@@ -1,7 +1,0 @@
-com.example.week1_emotion.app-pngs-0 D:\UMC\week1\app\build\generated\res\pngs\debug
-com.example.week1_emotion.app-updated_navigation_xml-1 D:\UMC\week1\app\build\generated\updated_navigation_xml\debug
-com.example.week1_emotion.app-packageDebugResources-2 D:\UMC\week1\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.week1_emotion.app-packageDebugResources-3 D:\UMC\week1\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.week1_emotion.app-debug-4 D:\UMC\week1\app\build\intermediates\merged_res\debug\mergeDebugResources
-com.example.week1_emotion.app-debug-5 D:\UMC\week1\app\src\debug\res
-com.example.week1_emotion.app-main-6 D:\UMC\week1\app\src\main\res
