@@ -50,8 +50,14 @@ dependencies {
     implementation(libs.androidx.navigation.ui)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.cardview)
+    implementation(libs.androidx.viewpager2)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //data store
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+    //json
+    implementation("com.google.code.gson:gson:2.10.1")
 }

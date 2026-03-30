@@ -7,81 +7,33 @@
     android:layout_height="match_parent"
     tools:context=".ui.shop.ShopFragment">
 
-    <LinearLayout
-        android:id="@+id/tap_layout"
-        android:layout_width="0dp"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
         android:layout_marginTop="65dp"
-        android:orientation="horizontal"
+        android:layout_marginEnd="95dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabIndicatorColor="#000000"
+        app:tabIndicatorFullWidth="true"
+        app:tabInlineLabel="true"
+        app:tabMode="fixed"
+        app:tabPaddingEnd="8dp"
+        app:tabPaddingStart="8dp"
+        app:tabSelectedTextColor="#000000"
+        app:tabTextColor="#767676">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    </com.google.android.material.tabs.TabLayout>
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingLeft="24dp"
-                android:paddingTop="20dp"
-                android:paddingRight="24dp"
-                android:paddingBottom="20dp"
-                android:text="전체"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="16sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#000000" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:paddingLeft="24dp"
-            android:paddingTop="20dp"
-            android:paddingRight="24dp"
-            android:paddingBottom="20dp"
-            android:text="Tops &amp; T-Shirts"
-            android:textColor="#767676"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:paddingLeft="24dp"
-            android:paddingTop="20dp"
-            android:paddingRight="24dp"
-            android:paddingBottom="20dp"
-            android:text="Shoes"
-            android:textColor="#767676"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/shop_rv"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tap_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.umc.workbook.week2.data.ShopProductData
 import com.umc.workbook.week2.databinding.ItemWishlistBinding
-import com.umc.workbook.week2.model.WishlistData
+import com.umc.workbook.week2.data.WishlistData
 
 class WishlistAdapter(
-    private val productList: MutableList<WishlistData>,
-    private val onItemClicked: (WishlistData) -> Unit
+    private val productList: MutableList<ShopProductData>,
+    private val onItemClicked: (ShopProductData) -> Unit
 ) : RecyclerView.Adapter<WishlistViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -30,11 +31,17 @@ class WishlistAdapter(
     }
 
     override fun getItemCount(): Int = productList.size
+
+    fun updateList(newList: List<ShopProductData>) {
+        productList.clear()
+        productList.addAll(newList)
+        notifyDataSetChanged()
+    }
 }
 
 class WishlistViewHolder(val binding: ItemWishlistBinding)
     : RecyclerView.ViewHolder(binding.root){
-        fun bind(product: WishlistData){
+        fun bind(product: ShopProductData){
             binding.ivShopProduct.setImageResource(product.image)
             binding.tvProductN.text = product.name
             binding.tvPrice2.text = product.price

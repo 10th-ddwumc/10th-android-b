@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umc.workbook.week2.R
 import com.umc.workbook.week2.databinding.ItemShopProductBinding
-import com.umc.workbook.week2.model.ShopProductData
+import com.umc.workbook.week2.data.ShopProductData
 
 class ShopProductAdatper(
     private val productList: MutableList<ShopProductData>,
-    private val onItemClicked: (ShopProductData) -> Unit
+    private val onItemClicked: (ShopProductData) -> Unit,
+    private val onWishClicked: (Int, ShopProductData) -> Unit,
 ): RecyclerView.Adapter<ShopProductViewHolder> (){
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -33,12 +34,22 @@ class ShopProductAdatper(
         }
 
         holder.binding.ivWish.setOnClickListener {
-            productList[position] = product.copy(isWishlisted = !product.isWishlisted)
+            val updated = product.copy(isWishlisted = !product.isWishlisted)
+            productList[position] = updated
             notifyItemChanged(position)
+            onWishClicked(position, updated)
         }
     }
 
     override fun getItemCount(): Int = productList.size
+
+    fun getCurrentList(): List<ShopProductData> = productList.toList()
+
+    fun updateList(newList:List<ShopProductData>){
+        productList.clear()
+        productList.addAll(newList)
+        notifyDataSetChanged()
+    }
 
 }
 

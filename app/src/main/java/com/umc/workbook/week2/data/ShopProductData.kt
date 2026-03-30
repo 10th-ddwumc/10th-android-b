@@ -1,4 +1,4 @@
-package com.umc.workbook.week2.model
+package com.umc.workbook.week2.data
 
 data class ShopProductData(
     val image: Int,

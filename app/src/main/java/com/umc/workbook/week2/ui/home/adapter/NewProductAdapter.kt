@@ -3,12 +3,11 @@ package com.umc.workbook.week2.ui.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.umc.workbook.week2.ui.home.adapter.NewProductDelegate
 import com.umc.workbook.week2.databinding.ItemNewProductBinding
-import com.umc.workbook.week2.model.ProductData
+import com.umc.workbook.week2.data.NewProductData
 
 class NewProductAdapter(
-    private val productList: MutableList<ProductData>,
+    private val productList: MutableList<NewProductData>,
     private val delegate: NewProductDelegate
 ): RecyclerView.Adapter<NewProductViewHolder>() {
 
@@ -31,11 +30,17 @@ class NewProductAdapter(
     }
 
     override fun getItemCount(): Int = productList.size
+
+    fun updateList(newList:List<NewProductData>){
+        productList.clear()
+        productList.addAll(newList)
+        notifyDataSetChanged()
+    }
 }
 
 class NewProductViewHolder(val binding: ItemNewProductBinding):
     RecyclerView.ViewHolder(binding.root) {
-    fun bind(product: ProductData){
+    fun bind(product: NewProductData){
         binding.ivNewProduct.setImageResource(product.image)
         binding.tvProductName.text = product.name
         binding.tvPrice.text = product.price
