@@ -1,12 +1,16 @@
-package com.umc.workbook.week2
+package com.umc.workbook.week2.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.umc.workbook.week2.ui.home.adapter.NewProductAdapter
+import com.umc.workbook.week2.ui.home.adapter.NewProductDelegate
+import com.umc.workbook.week2.model.ProductData
+import com.umc.workbook.week2.R
 import com.umc.workbook.week2.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment(), NewProductDelegate {

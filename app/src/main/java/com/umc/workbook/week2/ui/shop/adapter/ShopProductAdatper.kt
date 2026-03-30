@@ -1,10 +1,12 @@
-package com.umc.workbook.week2
+package com.umc.workbook.week2.ui.shop.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.umc.workbook.week2.R
 import com.umc.workbook.week2.databinding.ItemShopProductBinding
+import com.umc.workbook.week2.model.ShopProductData
 
 class ShopProductAdatper(
     private val productList: MutableList<ShopProductData>,
@@ -29,6 +31,11 @@ class ShopProductAdatper(
         holder.binding.root.setOnClickListener {
             onItemClicked(product)
         }
+
+        holder.binding.ivWish.setOnClickListener {
+            productList[position] = product.copy(isWishlisted = !product.isWishlisted)
+            notifyItemChanged(position)
+        }
     }
 
     override fun getItemCount(): Int = productList.size
@@ -50,16 +57,8 @@ class ShopProductViewHolder(val binding: ItemShopProductBinding):
                 binding.tvBestSeller.visibility = View.GONE
             }
 
-            var isWishlisted = product.isWishlisted
-            // 토글
-            binding.ivWish.setOnClickListener {
-                isWishlisted = !isWishlisted
-                updateHeart(isWishlisted)
-            }
-        }
-        private fun updateHeart(isWishlisted: Boolean){
             binding.ivWish.setImageResource(
-                if (isWishlisted) R.drawable.ic_heart_filled
+                if (product.isWishlisted) R.drawable.ic_heart_filled
                 else R.drawable.ic_heart_blank
             )
         }

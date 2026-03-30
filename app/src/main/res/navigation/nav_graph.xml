@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.umc.workbook.week2.HomeFragment"
+        android:name="com.umc.workbook.week2.ui.home.HomeFragment"
         android:label="홈"
         tools:layout="@layout/fragment_home" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.umc.workbook.week2.CartFragment"
+        android:name="com.umc.workbook.week2.ui.cart.CartFragment"
         android:label="장바구니"
         tools:layout="@layout/fragment_cart" >
         <action
@@ -27,12 +27,12 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.umc.workbook.week2.ProfileFragment"
+        android:name="com.umc.workbook.week2.ui.profile.ProfileFragment"
         android:label="프로필"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/shopFragment"
-        android:name="com.umc.workbook.week2.ShopFragment"
+        android:name="com.umc.workbook.week2.ui.shop.ShopFragment"
         android:label="구매하기"
         tools:layout="@layout/fragment_shop" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/wishlistFragment"
-        android:name="com.umc.workbook.week2.WishlistFragment"
+        android:name="com.umc.workbook.week2.ui.wishlist.WishlistFragment"
         android:label="위시리스트"
         tools:layout="@layout/fragment_wishlist" >
         <action
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
-        android:name="com.umc.workbook.week2.ProductDetailFragment"
+        android:name="com.umc.workbook.week2.ui.shop.ProductDetailFragment"
         android:label="상세페이지"
         tools:layout="@layout/fragment_product_detail" />
 </navigation>

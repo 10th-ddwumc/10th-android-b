@@ -1,4 +1,4 @@
-package com.umc.workbook.week2
+package com.umc.workbook.week2.model
 
 data class WishlistData(
     val image: Int,

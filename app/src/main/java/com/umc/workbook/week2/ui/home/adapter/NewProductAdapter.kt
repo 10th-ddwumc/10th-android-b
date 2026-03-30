@@ -1,9 +1,11 @@
-package com.umc.workbook.week2
+package com.umc.workbook.week2.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.umc.workbook.week2.ui.home.adapter.NewProductDelegate
 import com.umc.workbook.week2.databinding.ItemNewProductBinding
+import com.umc.workbook.week2.model.ProductData
 
 class NewProductAdapter(
     private val productList: MutableList<ProductData>,

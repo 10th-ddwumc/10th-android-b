@@ -1,10 +1,11 @@
-package com.umc.workbook.week2
+package com.umc.workbook.week2.ui.wishlist.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.umc.workbook.week2.databinding.ItemWishlistBinding
+import com.umc.workbook.week2.model.WishlistData
 
 class WishlistAdapter(
     private val productList: MutableList<WishlistData>,
