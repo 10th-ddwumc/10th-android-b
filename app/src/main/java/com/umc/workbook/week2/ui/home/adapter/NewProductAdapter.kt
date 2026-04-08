@@ -1,0 +1,48 @@
+package com.umc.workbook.week2.ui.home.adapter
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.umc.workbook.week2.databinding.ItemNewProductBinding
+import com.umc.workbook.week2.data.NewProductData
+
+class NewProductAdapter(
+    private val productList: MutableList<NewProductData>,
+    private val delegate: NewProductDelegate
+): RecyclerView.Adapter<NewProductViewHolder>() {
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): NewProductViewHolder {
+        val binding = ItemNewProductBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+        return NewProductViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: NewProductViewHolder, position: Int) {
+        val product = productList[position]
+        holder.bind(product)
+        holder.binding.root.setOnClickListener {
+            delegate.onItemClicked(product)
+        }
+    }
+
+    override fun getItemCount(): Int = productList.size
+
+    fun updateList(newList:List<NewProductData>){
+        productList.clear()
+        productList.addAll(newList)
+        notifyDataSetChanged()
+    }
+}
+
+class NewProductViewHolder(val binding: ItemNewProductBinding):
+    RecyclerView.ViewHolder(binding.root) {
+    fun bind(product: NewProductData){
+        binding.ivNewProduct.setImageResource(product.image)
+        binding.tvProductName.text = product.name
+        binding.tvPrice.text = product.price
+    }
+}
