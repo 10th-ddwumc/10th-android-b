@@ -32,7 +32,11 @@ class HomeFragment : Fragment() {
         )
 
         lifecycleScope.launch {
-            ProductDataStore.saveHomeProduts(requireContext(), productList)
+            ProductDataStore.getHomeProducts(requireContext()).collect {products ->
+                if(products.isEmpty()) {
+                    ProductDataStore.saveHomeProduts(requireContext(),productList)
+                }
+            }
         }
 
         lifecycleScope.launch {

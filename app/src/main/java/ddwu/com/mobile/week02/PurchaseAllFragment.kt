@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import ddwu.com.mobile.week02.databinding.FragmentPurchaseAllBinding
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class PurchaseAllFragment : Fragment() {
@@ -49,18 +50,16 @@ class PurchaseAllFragment : Fragment() {
 
                         ProductDataStore.savePurchaseProducts(requireContext(), currentList)
 
-                        ProductDataStore.getWishlistProducts(requireContext())
-                            .collect { wishProducts ->
-                                val newWishlist = wishProducts.toMutableList()
-                                if (updatedProduct.isLiked) {
-                                    if (!newWishlist.any {it.name == updatedProduct.name}) {
-                                        newWishlist.add(updatedProduct)
-                                    }
-                                } else {
-                                    newWishlist.removeAll {it.name == updatedProduct.name}
-                                }
-                                ProductDataStore.saveWishlistProducts(requireContext(), newWishlist)
+                        val wishProducts = ProductDataStore.getWishlistProducts(requireContext()).first()
+                        val newWishlist = wishProducts.toMutableList()
+                        if (updatedProduct.isLiked) {
+                            if (!newWishlist.any {it.name == updatedProduct.name}) {
+                                newWishlist.add(updatedProduct)
                             }
+                        } else {
+                            newWishlist.removeAll {it.name == updatedProduct.name}
+                        }
+                        ProductDataStore.saveWishlistProducts(requireContext(), newWishlist)
                     }
                 }
                 binding.rvPurchase.adapter = adapter
