@@ -1,10 +1,10 @@
-package com.umc.workbook.week2.ui.shop
+package com.umc.workbook.week2.ui.shop.shoes
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -56,12 +56,18 @@ class AllFragment : Fragment() {
                             R.drawable.product1, "Nike Everyday Plus Cushioned",
                             "Training Ankle Socks (6 Pairs)", "5 Colours", "US\$10"
                         ),
-                        ShopProductData(R.drawable.product3, "Nike Elite Crew",
-                            "Basketball Socks", "7 Colours", "US\$16"),
-                        ShopProductData(R.drawable.product2, "Nike Air Force 1 '07",
-                            "Women's Shoes", "5 Colours", "US\$115", isBestSeller = true),
-                        ShopProductData(R.drawable.product2, "Jordan Air Force 1 Essentials",
-                            "Men's Shoes", "2 Colours", "US\$115", isBestSeller = true),
+                        ShopProductData(
+                            R.drawable.product3, "Nike Elite Crew",
+                            "Basketball Socks", "7 Colours", "US\$16"
+                        ),
+                        ShopProductData(
+                            R.drawable.product2, "Nike Air Force 1 '07",
+                            "Women's Shoes", "5 Colours", "US\$115", isBestSeller = true
+                        ),
+                        ShopProductData(
+                            R.drawable.product2, "Jordan Air Force 1 Essentials",
+                            "Men's Shoes", "2 Colours", "US\$115", isBestSeller = true
+                        ),
                     )
                     shopDataStore.saveShopProducts(shopProductList)
                 } else {

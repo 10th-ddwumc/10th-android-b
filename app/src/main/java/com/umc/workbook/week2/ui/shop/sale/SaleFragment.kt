@@ -1,11 +1,10 @@
-package com.umc.workbook.week2.ui.shop
+package com.umc.workbook.week2.ui.shop.sale
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.umc.workbook.week2.R
+import androidx.fragment.app.Fragment
 import com.umc.workbook.week2.databinding.FragmentSaleBinding
 
 class SaleFragment : Fragment() {

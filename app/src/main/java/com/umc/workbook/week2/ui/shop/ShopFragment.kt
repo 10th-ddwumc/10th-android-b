@@ -15,6 +15,9 @@ import com.umc.workbook.week2.data.ShopDataStore
 import com.umc.workbook.week2.ui.shop.adapter.ShopProductAdatper
 import com.umc.workbook.week2.data.ShopProductData
 import com.umc.workbook.week2.databinding.FragmentShopBinding
+import com.umc.workbook.week2.ui.shop.sale.SaleFragment
+import com.umc.workbook.week2.ui.shop.shoes.AllFragment
+import com.umc.workbook.week2.ui.shop.tops.TopsFragment
 import kotlinx.coroutines.launch
 
 class ShopFragment : Fragment() {
