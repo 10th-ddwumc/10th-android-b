@@ -46,6 +46,7 @@ class ProfileFragment : Fragment() {
                     binding.tvNickname.text = "${user.firstName}${user.lastName}"
                     Glide.with(this@ProfileFragment)
                         .load(user.avatar)
+                        .circleCrop()
                         .into(binding.ivProfile)
                 }
                 .onFailure { error ->
