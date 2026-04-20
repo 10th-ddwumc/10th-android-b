@@ -1,19 +1,18 @@
 package com.umc.workbook.week2
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
-import com.umc.workbook.week2.databinding.ActivityMainBinding
 import androidx.navigation.ui.NavigationUI
+import com.umc.workbook.week2.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    private val TAG = "MAIN"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // NavGraph로 수정
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.main_fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
@@ -39,5 +37,4 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
-
 }

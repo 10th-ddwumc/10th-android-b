@@ -6,17 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.umc.workbook.week2.databinding.FragmentSaleBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SaleFragment : Fragment() {
 
-    lateinit var binding: FragmentSaleBinding
+    private lateinit var binding: FragmentSaleBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSaleBinding.inflate(inflater, container, false)
         return binding.root
     }
-
 }
