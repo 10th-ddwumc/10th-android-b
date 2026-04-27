@@ -3,10 +3,12 @@ package com.example.nike.Profit
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nike.R
 import com.example.nike.databinding.ProfitFragmentBinding
 import com.bumptech.glide.Glide
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,46 +41,34 @@ class ProfitFragment : Fragment(R.layout.profit_fragment) {
     }
 
     private fun loadMyProfile() {
-        RetrofitClient.api.getUser(1).enqueue(object : Callback<UserResponse> {
-            override fun onResponse(
-                call: Call<UserResponse>,
-                response: Response<UserResponse>
-            ) {
-                if (response.isSuccessful) {
-                    val user = response.body()?.data ?: return
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val response = RetrofitClient.api.getUser(1)
+                val user = response.data
 
-                    binding.txName.text = "${user.first_name} ${user.last_name}"
+                binding.txName.text = "${user.first_name} ${user.last_name}"
 
-                    Glide.with(requireContext())
-                        .load(user.avatar)
-                        .into(binding.imProfile)
-                }
+                Glide.with(requireContext())
+                    .load(user.avatar)
+                    .into(binding.imProfile)
+
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-
-            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                t.printStackTrace()
-            }
-        })
+        }
     }
 
     private fun loadFollowingList() {
-        RetrofitClient.api.getUserList().enqueue(object : Callback<UserListResponse> {
-            override fun onResponse(
-                call: Call<UserListResponse>,
-                response: Response<UserListResponse>
-            ) {
-                if (response.isSuccessful) {
-                    val users = response.body()?.data ?: emptyList()
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val response = RetrofitClient.api.getUserList()
+                val users = response.data.take(3)
 
-                    followingAdapter.updateList(users)
+                followingAdapter.updateList(users)
 
-                   // binding.tvFollowingTitle?.text = "팔로잉 (${users.size})"
-                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-
-            override fun onFailure(call: Call<UserListResponse>, t: Throwable) {
-                t.printStackTrace()
-            }
-        })
+        }
     }
 }
