@@ -28,28 +28,34 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fetchUser()
+        fetchUserList()
+    }
+
+    private fun fetchUser() {
         lifecycleScope.launch {
-            try{
-                val response = RetrofitClient.api.getUser(1)
-                val user = response.data
+          try {
+              val response = RetrofitClient.api.getUser(1)
+              val user = response.data
 
-                if (_binding == null) return@launch
+              if (_binding == null) return@launch
 
-                binding.tvNickname.text = "${user.firstName} ${user.lastName}"
-
-                Glide.with(requireContext())
-                    .load(user.avatar)
-                    .into(binding.ivProfile)
-            } catch (e: Exception){
-                e.printStackTrace()
-                android.util.Log.e("ProfileFragment", "에러: ${e.message}")
-            }
+              binding.tvNickname.text = "${user.firstName} ${user.lastName}"
+              Glide.with(requireContext())
+                  .load(user.avatar)
+                  .into(binding.ivProfile)
+          } catch (e: Exception) {
+              e.printStackTrace()
+              android.util.Log.e("ProfileFragment", "에러: ${e.message}")
+          }
         }
+    }
 
+    private fun fetchUserList() {
         lifecycleScope.launch {
             try{
                 val response = RetrofitClient.api.getUserList()
-                val userList = response.data.toMutableList()
+                val userList = mutableListOf<UserData>().apply {addAll(response.data)}
 
                 if (_binding == null) return@launch
 

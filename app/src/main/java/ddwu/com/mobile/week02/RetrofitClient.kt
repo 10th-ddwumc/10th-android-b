@@ -1,5 +1,6 @@
 package ddwu.com.mobile.week02
 
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,7 +13,15 @@ object RetrofitClient {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
+    private val headerInterceptor = Interceptor { chain ->
+        val request = chain.request().newBuilder()
+            .addHeader("x-api-key", "reqres_647c2e70f3704855891df2eaa4239957")
+            .build()
+        chain.proceed(request)
+    }
+
     private val client = OkHttpClient.Builder()
+        .addInterceptor(headerInterceptor)
         .addInterceptor (loggingInterceptor)
         .build()
 

@@ -8,11 +8,9 @@ data class UserResponse (
 )
 
 data class UserData (
-    // id email firstname lastname avatar
+    // id firstname lastname avatar
     @SerializedName("id")
     val id: Int,
-    @SerializedName("email")
-    val email: String,
     @SerializedName("first_name")
     val firstName: String,
     @SerializedName("last_name")
