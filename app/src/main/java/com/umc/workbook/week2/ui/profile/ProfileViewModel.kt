@@ -20,8 +20,6 @@ class ProfileViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(ProfileUiState())
     val uiState: StateFlow<ProfileUiState> = _uiState.asStateFlow()
 
-    private val API_KEY = "reqres_9b160204291c4d13a1ff4ef5a677a03c"
-
     init {
         fetchUser()
         fetchUserList()
@@ -29,7 +27,7 @@ class ProfileViewModel @Inject constructor(
 
     private fun fetchUser() {
         viewModelScope.launch {
-            repository.getUser(API_KEY)
+            repository.getUser()
                 .onSuccess { user -> _uiState.update { it.copy(user = user) } }
                 .onFailure { Log.d("ProfileViewModel", "유저 조회 실패: ${it.message}") }
         }
@@ -37,7 +35,7 @@ class ProfileViewModel @Inject constructor(
 
     private fun fetchUserList() {
         viewModelScope.launch {
-            repository.getUserList(API_KEY)
+            repository.getUserList()
                 .onSuccess { users -> _uiState.update { it.copy(userList = users) } }
                 .onFailure { Log.d("ProfileViewModel", "리스트 조회 실패: ${it.message}") }
         }

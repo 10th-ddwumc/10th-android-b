@@ -11,8 +11,8 @@ class UserRepository @Inject constructor(
     private val service: UserService
 ) : RemoteUserRepository {
 
-    override suspend fun getUser(apiKey: String): Result<UserData> = try {
-        val response = service.getUser(1, apiKey)
+    override suspend fun getUser(): Result<UserData> = try {
+        val response = service.getUser(1)
         if (response.isSuccessful) {
             val body = response.body()
             if (body?.data == null) Result.failure(RuntimeException("Response body is null"))
@@ -25,8 +25,8 @@ class UserRepository @Inject constructor(
         Result.failure(e)
     }
 
-    override suspend fun getUserList(apiKey: String): Result<List<UserData>> = try {
-        val response = service.getUserList(apiKey)
+    override suspend fun getUserList(): Result<List<UserData>> = try {
+        val response = service.getUserList()
         if (response.isSuccessful) {
             val body = response.body()
             if (body?.data == null) Result.failure(RuntimeException("Response body is null"))
