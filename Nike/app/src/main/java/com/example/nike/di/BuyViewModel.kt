@@ -1,10 +1,10 @@
-package com.example.nike.com.example.nike.View.Ui.Base
+package com.example.nike.com.example.nike.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nike.R
 import com.example.nike.com.example.nike.data.model.BuyItemData
-import com.example.nike.com.example.nike.data.repository.BuyRepository
+import com.example.nike.com.example.nike.domain.repository.BuyRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,6 +1,6 @@
 package com.example.nike.View.Ui.ViewModel
 
-import com.example.nike.com.example.nike.data.repository.BuyRepository
+import com.example.nike.com.example.nike.domain.repository.BuyRepository
 import com.example.nike.data.repository.BuyRepositoryImpl
 import com.example.nike.data.repository.HomeRepository
 import com.example.nike.data.repository.HomeRepositoryImpl

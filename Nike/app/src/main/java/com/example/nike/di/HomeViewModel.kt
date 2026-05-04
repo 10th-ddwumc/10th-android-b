@@ -1,4 +1,4 @@
-package com.example.nike.View.Ui.Base
+package com.example.nike.com.example.nike.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,7 +20,7 @@ class HomeViewModel @Inject constructor(
     val homeItems = repository.getHomeItems()
         .stateIn(
             viewModelScope,
-            SharingStarted.WhileSubscribed(5000),
+            SharingStarted.Companion.WhileSubscribed(5000),
             emptyList()
         )
 
@@ -33,7 +33,12 @@ class HomeViewModel @Inject constructor(
             repository.initHomeItemsIfEmpty(
                 listOf(
                     HomeItemData("H_item1", R.drawable.image_4, "Air Jordan XXXVI", "US$185"),
-                    HomeItemData("H_item2", R.drawable.image_2_1, "Nike Everyday Plus Cushioned", "US$10")
+                    HomeItemData(
+                        "H_item2",
+                        R.drawable.image_2_1,
+                        "Nike Everyday Plus Cushioned",
+                        "US$10"
+                    )
                 )
             )
         }

@@ -2,7 +2,7 @@ package com.example.nike.data.repository
 
 
 import com.example.nike.com.example.nike.data.model.BuyItemData
-import com.example.nike.com.example.nike.data.repository.BuyRepository
+import com.example.nike.com.example.nike.domain.repository.BuyRepository
 import com.example.nike.data.local.ItemDataManager
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first

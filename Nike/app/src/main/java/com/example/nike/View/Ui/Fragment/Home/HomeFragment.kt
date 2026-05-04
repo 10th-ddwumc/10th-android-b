@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nike.Product.ProductFragment
 import com.example.nike.R
 import com.example.nike.View.Ui.Adapter.HomeItemAdapter
-import com.example.nike.View.Ui.Base.HomeViewModel
+import com.example.nike.com.example.nike.di.HomeViewModel
 import com.example.nike.databinding.HomeFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

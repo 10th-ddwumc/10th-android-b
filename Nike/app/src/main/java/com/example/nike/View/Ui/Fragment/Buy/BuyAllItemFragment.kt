@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nike.View.Ui.Adapter.BuyItemAdapter
 import com.example.nike.Product.ProductFragment
 import com.example.nike.R
-import com.example.nike.com.example.nike.View.Ui.Base.BuyViewModel
+import com.example.nike.com.example.nike.di.BuyViewModel
 import com.example.nike.databinding.BuyAllItemsFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

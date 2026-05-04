@@ -1,6 +1,7 @@
-package com.example.nike.View.Ui.Base
+package com.example.nike.com.example.nike.di
 
 import androidx.lifecycle.ViewModel
+import com.example.nike.View.Ui.Base.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

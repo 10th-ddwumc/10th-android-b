@@ -1,4 +1,4 @@
-package com.example.nike.com.example.nike.data.repository
+package com.example.nike.com.example.nike.domain.repository
 
 
 import com.example.nike.com.example.nike.data.model.BuyItemData
