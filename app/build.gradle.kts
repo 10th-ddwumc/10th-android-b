@@ -86,6 +86,11 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.lifecycle.runtime.ktx)
 
+    // Hilt
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    // 이미지 로딩
+    implementation("io.coil-kt:coil-compose:2.7.0")
+
     // Compose
     val composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
