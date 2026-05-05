@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.umc.workbook.week2.MainActivity
-import com.umc.workbook.week2.R
+
 import com.umc.workbook.week2.databinding.FragmentCartBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,9 +23,5 @@ class CartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.button.setOnClickListener {
-            (activity as MainActivity).binding.mainBnv.selectedItemId = R.id.shopFragment
-        }
     }
 }
