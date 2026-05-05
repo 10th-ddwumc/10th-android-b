@@ -63,8 +63,8 @@ fun ShopScreen(
                     Text(
                         text = title,
                         fontSize = 16.sp,
-                        fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
                         color = if (isSelected) Color.Black else Color(0xFF9E9E9E),
+                        modifier = Modifier.padding(horizontal = 4.dp)
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Box(
