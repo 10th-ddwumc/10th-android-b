@@ -47,7 +47,7 @@ fun WishlistScreen(
             ),
             modifier = Modifier.fillMaxSize()
         ) {
-            items(uiState.wishlisted) { product ->
+            items(uiState.wishlisted, key = { it.name }) { product ->
                 WishlistProductItem(product = product)
             }
         }

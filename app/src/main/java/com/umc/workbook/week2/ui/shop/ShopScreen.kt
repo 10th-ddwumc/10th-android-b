@@ -97,7 +97,7 @@ private fun ShopAllTab(
         contentPadding = PaddingValues(8.dp),
         modifier = Modifier.padding(top = 32.dp)
     ) {
-        itemsIndexed(products) { index, product ->
+        itemsIndexed(products, key = { _, product -> product.name }) { index, product ->
             ShopProductItem(
                 product = product,
                 onToggleWish = { onToggleWish(index) }

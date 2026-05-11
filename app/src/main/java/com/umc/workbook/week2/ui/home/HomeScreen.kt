@@ -81,7 +81,7 @@ fun HomeScreen(
             contentPadding = PaddingValues(start = 42.dp, top = 22.dp, end = 24.dp, bottom = 24.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(uiState.products) { product ->
+            items(uiState.products, key = { it.name }) { product ->
                 NewProductItem(product = product)
             }
         }
