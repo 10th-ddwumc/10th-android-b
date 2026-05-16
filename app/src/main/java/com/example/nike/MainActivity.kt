@@ -51,7 +51,7 @@ fun MainScreen() {
     // 네비게이션 컨트롤러
     val navController = rememberNavController()
 
-    // 클릭된 상품 저장 상태
+    //상세페이지 이동
     var selectedProduct by remember {
         mutableStateOf<ItemData?>(null)
     }
@@ -170,8 +170,7 @@ fun MainScreen() {
             }
         }
     }
-} // MainScreen 끝
-
+}
 
 @Composable
 fun BottomBar(
@@ -183,7 +182,6 @@ fun BottomBar(
 ) {
 
     NavigationBar {
-
         // 홈 버튼
         NavigationBarItem(
             selected = false,
