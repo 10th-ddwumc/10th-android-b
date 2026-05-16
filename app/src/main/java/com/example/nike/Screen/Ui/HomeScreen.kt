@@ -35,7 +35,9 @@ import java.time.LocalDate
 
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    onProductClick: (ItemData) -> Unit = {}
+) {
     val today = LocalDate.now()
 
     val dayOfWeek = when (today.dayOfWeek) {
@@ -77,7 +79,8 @@ fun HomeScreen() {
         Spacer(modifier = Modifier.height(30.dp))
 
         HomeProductList(
-            itemList = ProductData.homeProducts
+            itemList = ProductData.homeProducts,
+            onProductClick = onProductClick
         )
     }
 }
@@ -94,10 +97,10 @@ fun HomeMainImage() {
     )
 }
 
-
 @Composable
 fun HomeProductList(
-    itemList: List<ItemData>
+    itemList: List<ItemData>,
+    onProductClick: (ItemData) -> Unit
 ) {
     LazyRow(
         horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -107,25 +110,27 @@ fun HomeProductList(
             items = itemList,
             key = { it.id }
         ) { product ->
-            HomeProductItem(product)
+            HomeProductItem(
+                product = product,
+                onProductClick = onProductClick
+            )
         }
     }
 }
 
 @Composable
 fun HomeProductItem(
-    product: ItemData
+    product: ItemData,
+    onProductClick: (ItemData) -> Unit
 ) {
     Card(
-        //배경 흰색
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
-
         modifier = Modifier
             .width(180.dp)
             .clickable {
-
+                onProductClick(product)
             }
     ) {
         Column(

@@ -21,9 +21,15 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import com.example.nike.Screen.Ui.BuyScreen
 import com.example.nike.Screen.Ui.HomeScreen
+import com.example.nike.Screen.Ui.Item.ItemData
 import com.example.nike.Screen.Ui.PocketScreen
+import com.example.nike.Screen.Ui.ProductDetailScreen
 import com.example.nike.Screen.Ui.ProfitScreen
 import com.example.nike.Screen.Ui.ReProfitScreen
 import com.example.nike.Screen.Ui.WishScreen
@@ -42,6 +48,26 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen() {
+
+    //상세페이지 이동
+    var selectedProduct by remember {
+        mutableStateOf<ItemData?>(null)
+    }
+
+    if (selectedProduct != null) {
+        ProductDetailScreen(
+            product = selectedProduct!!,
+            onBackClick = {
+                selectedProduct = null
+            }
+        )
+    } else {
+        BuyScreen(
+            onProductClick = { product ->
+                selectedProduct = product
+            }
+        )
+    }
 
     val navController = rememberNavController()
 
@@ -64,9 +90,22 @@ fun MainScreen() {
         )
         {
             // 홈
-            composable<AppDestination.Home> { HomeScreen() }
+            composable<AppDestination.Home> {
+                HomeScreen(
+                    onProductClick = { product ->
+
+                    }
+                )
+            }
+
             // 구매하기
-            composable<AppDestination.Buy> { BuyScreen() }
+            composable<AppDestination.Buy> {
+                BuyScreen(
+                    onProductClick = { product ->
+
+                    }
+                )
+            }
             // 장바구니
             composable<AppDestination.Pocket> {
                 PocketScreen(

@@ -34,14 +34,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.nike.Screen.Ui.Item.ItemData
-import com.example.nike.Screen.Ui.Item.ProductData
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.nike.Model.BuyViewModel
 
 @Composable
 fun BuyScreen(
-    buyViewModel: BuyViewModel = viewModel()
+    buyViewModel: BuyViewModel = viewModel(),
+    onProductClick: (ItemData) -> Unit
 ) {
 
     val selectedTabIndex = buyViewModel.selectedTabIndex
@@ -95,7 +95,9 @@ fun BuyScreen(
         Spacer(modifier = Modifier.height(20.dp))
 
         BuyProductGrid(
-            itemList = itemList
+            itemList = itemList ,
+            onProductClick = onProductClick
+
         )
     }
 }
@@ -128,7 +130,8 @@ fun BuyTabRow(
 
 @Composable
 fun BuyProductGrid(
-    itemList: List<ItemData>
+    itemList: List<ItemData>,
+    onProductClick: (ItemData) -> Unit
 ) {
 
     LazyVerticalGrid(
@@ -148,52 +151,44 @@ fun BuyProductGrid(
             items = itemList,
             key = { it.id }
         ) { product ->
-
-            BuyProductItem(product)
+            BuyProductItem(
+                product = product,
+                onProductClick = onProductClick
+            )
         }
     }
 }
-
 @Composable
 fun BuyProductItem(
-    product: ItemData
+    product: ItemData,
+    onProductClick: (ItemData) -> Unit
 ) {
-
     Card(
-        //배경 흰색
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
-
         modifier = Modifier
             .width(180.dp)
             .clickable {
-
+                onProductClick(product)
             }
     ) {
-
         Column(
             modifier = Modifier.padding(12.dp)
         ) {
-
             Image(
                 painter = painterResource(id = product.imageRes),
-
                 contentDescription = product.name,
-
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(180.dp)
                     .clip(RoundedCornerShape(12.dp)),
-
                 contentScale = ContentScale.Crop
             )
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            Text(
-                text = product.bestSell
-            )
+            Text(text = product.bestSell ?: "")
 
             Text(
                 text = product.name,
@@ -203,9 +198,7 @@ fun BuyProductItem(
 
             Spacer(modifier = Modifier.height(4.dp))
 
-            Text(
-                text = product.explan
-            )
+            Text(text = product.explan ?: "")
 
             Spacer(modifier = Modifier.height(4.dp))
 
