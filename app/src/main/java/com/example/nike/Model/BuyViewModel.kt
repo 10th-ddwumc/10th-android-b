@@ -2,6 +2,7 @@ package com.example.nike.Model
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.nike.Screen.Ui.Item.ItemData
@@ -20,15 +21,20 @@ class BuyViewModel : ViewModel() {
     }
 
     //아이템 리스트
-    val itemList: List<ItemData>
-        get() = when (selectedTabIndex) {
+    var itemList by mutableStateOf(ProductData.buyProducts)
+        private set
 
-            0 -> ProductData.buyProducts
+    //위시
+    fun toggleWish(id: Int) {
+        itemList = itemList.map { item ->
 
-            1 -> emptyList<ItemData>()
-
-            2 -> emptyList<ItemData>()
-
-            else -> ProductData.buyProducts
+            if (item.id == id) {
+                item.copy(
+                    isWishlisted = !item.isWishlisted
+                )
+            } else {
+                item
+            }
         }
+    }
 }

@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -22,10 +24,7 @@ import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -37,6 +36,7 @@ import androidx.compose.ui.unit.sp
 import com.example.nike.Screen.Ui.Item.ItemData
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.nike.Model.BuyViewModel
+import com.example.nike.R
 
 @Composable
 fun BuyScreen(
@@ -96,8 +96,11 @@ fun BuyScreen(
 
         BuyProductGrid(
             itemList = itemList ,
-            onProductClick = onProductClick
-
+            onProductClick = onProductClick,
+            //위시 추가
+            onHeartClick = { item ->
+                buyViewModel.toggleWish(item.id)
+            }
         )
     }
 }
@@ -131,7 +134,8 @@ fun BuyTabRow(
 @Composable
 fun BuyProductGrid(
     itemList: List<ItemData>,
-    onProductClick: (ItemData) -> Unit
+    onProductClick: (ItemData) -> Unit,
+    onHeartClick: (ItemData) -> Unit
 ) {
 
     LazyVerticalGrid(
@@ -153,15 +157,19 @@ fun BuyProductGrid(
         ) { product ->
             BuyProductItem(
                 product = product,
-                onProductClick = onProductClick
+                onProductClick = onProductClick,
+                onHeartClick = {
+                    onHeartClick(product)
+                }
             )
         }
     }
-}
-@Composable
+
+}@Composable
 fun BuyProductItem(
     product: ItemData,
-    onProductClick: (ItemData) -> Unit
+    onProductClick: (ItemData) -> Unit,
+    onHeartClick: () -> Unit
 ) {
     Card(
         colors = CardDefaults.cardColors(
@@ -173,22 +181,47 @@ fun BuyProductItem(
                 onProductClick(product)
             }
     ) {
+
         Column(
             modifier = Modifier.padding(12.dp)
         ) {
-            Image(
-                painter = painterResource(id = product.imageRes),
-                contentDescription = product.name,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(180.dp)
-                    .clip(RoundedCornerShape(12.dp)),
-                contentScale = ContentScale.Crop
-            )
+
+            // 이미지 + 하트
+            Box {
+
+                Image(
+                    painter = painterResource(id = product.imageRes),
+                    contentDescription = product.name,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(180.dp)
+                        .clip(RoundedCornerShape(12.dp)),
+                    contentScale = ContentScale.Crop
+                )
+
+                Image(
+                    painter = painterResource(
+                        id = if (product.isWishlisted) {
+                            R.drawable.icon
+                        } else {
+                            R.drawable.icon__1
+                        }
+                    ),
+                    contentDescription = "wish",
+
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(8.dp)
+                        .size(28.dp)
+                        .clickable {
+                            onHeartClick()
+                        }
+                )
+            }
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            Text(text = product.bestSell ?: "")
+            Text(text = product.bestSell)
 
             Text(
                 text = product.name,
@@ -198,7 +231,7 @@ fun BuyProductItem(
 
             Spacer(modifier = Modifier.height(4.dp))
 
-            Text(text = product.explan ?: "")
+            Text(text = product.explan)
 
             Spacer(modifier = Modifier.height(4.dp))
 

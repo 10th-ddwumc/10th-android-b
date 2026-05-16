@@ -25,6 +25,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.nike.Model.BuyViewModel
 import com.example.nike.Screen.Ui.BuyScreen
 import com.example.nike.Screen.Ui.HomeScreen
 import com.example.nike.Screen.Ui.Item.ItemData
@@ -50,6 +52,9 @@ fun MainScreen() {
 
     // 네비게이션 컨트롤러
     val navController = rememberNavController()
+
+    // 위시: Buy, Wish가 같이 쓸 ViewModel
+    val buyViewModel: BuyViewModel = viewModel()
 
     //상세페이지 이동
     var selectedProduct by remember {
@@ -125,6 +130,7 @@ fun MainScreen() {
                 composable<AppDestination.Buy> {
 
                     BuyScreen(
+                        buyViewModel = buyViewModel,
                         onProductClick = { product ->
 
                             // 상품 클릭 시 상세페이지 이동
@@ -150,7 +156,12 @@ fun MainScreen() {
 
                 // 위시리스트 화면
                 composable<AppDestination.Wish> {
-                    WishScreen()
+                    WishScreen(
+                        buyViewModel = buyViewModel,
+                        onProductClick = { product ->
+                            selectedProduct = product
+                        }
+                    )
                 }
 
                 // 프로필 화면
