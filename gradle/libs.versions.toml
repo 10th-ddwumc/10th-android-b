@@ -11,12 +11,16 @@ activity = "1.13.0"
 constraintlayout = "2.2.1"
 
 #7주차
-kotlin = "2.3.21"
+kotlin = "2.3.21" #버전 차이 완화
 navigationCompose = "2.9.8"
 kotlinxSerializationJson = "1.11.0"
 material3 = "1.4.0"
-composeIcons = "1.7.6"
+composeIcons = "1.7.8"
 playServicesAnalyticsImpl = "18.2.0"
+
+#9주차
+coil = "3.4.0"
+coroutines = "1.8.1"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -36,6 +40,13 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 play-services-analytics-impl = { group = "com.google.android.gms", name = "play-services-analytics-impl", version.ref = "playServicesAnalyticsImpl" }
+
+#9주차
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.2.0" }
+
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

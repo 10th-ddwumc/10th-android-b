@@ -5,8 +5,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.nike.Screen.Ui.Item.ItemData
-import com.example.nike.Screen.Ui.Item.ProductData
+import com.example.nike.Screen.Ui.Data.ProductData
 
 class BuyViewModel : ViewModel() {
     //사용할 상태 및 로직 넣기 (MVVM 형식)

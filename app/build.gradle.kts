@@ -71,4 +71,18 @@ dependencies {
     // 강의자료 Navigation
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+
+    //9주차
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.4.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //compose 이미지 띄우기
+    implementation(libs.coil.compose)
+
+    //코루틴 KSP 떄문에
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 }

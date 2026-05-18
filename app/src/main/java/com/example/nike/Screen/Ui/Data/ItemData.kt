@@ -1,4 +1,4 @@
-package com.example.nike.Screen.Ui.Item
+package com.example.nike.Screen.Ui.Data
 
 data class ItemData(
     //primaryKey 추가

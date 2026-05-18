@@ -33,7 +33,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.nike.Screen.Ui.Item.ItemData
+import com.example.nike.Screen.Ui.Data.ItemData
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.nike.Model.BuyViewModel
 import com.example.nike.R

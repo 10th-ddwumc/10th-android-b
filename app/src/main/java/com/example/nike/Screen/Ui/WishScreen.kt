@@ -20,7 +20,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.nike.Model.BuyViewModel
-import com.example.nike.Screen.Ui.Item.ItemData
+import com.example.nike.Screen.Ui.Data.ItemData
 
 @Composable
 fun WishScreen(

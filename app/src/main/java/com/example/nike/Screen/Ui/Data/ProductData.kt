@@ -1,4 +1,4 @@
-package com.example.nike.Screen.Ui.Item
+package com.example.nike.Screen.Ui.Data
 
 import com.example.nike.R
 

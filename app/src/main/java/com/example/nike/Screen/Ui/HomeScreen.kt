@@ -28,8 +28,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.nike.R
-import com.example.nike.Screen.Ui.Item.ItemData
-import com.example.nike.Screen.Ui.Item.ProductData
+import com.example.nike.Screen.Ui.Data.ItemData
+import com.example.nike.Screen.Ui.Data.ProductData
 import java.time.DayOfWeek
 import java.time.LocalDate
 

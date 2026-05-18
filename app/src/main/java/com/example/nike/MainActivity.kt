@@ -29,14 +29,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.nike.Model.BuyViewModel
 import com.example.nike.Screen.Ui.BuyScreen
 import com.example.nike.Screen.Ui.HomeScreen
-import com.example.nike.Screen.Ui.Item.ItemData
+import com.example.nike.Screen.Ui.Data.ItemData
 import com.example.nike.Screen.Ui.PocketScreen
 import com.example.nike.Screen.Ui.ProductDetailScreen
 import com.example.nike.Screen.Ui.ProfitScreen
 import com.example.nike.Screen.Ui.ReProfitScreen
 import com.example.nike.Screen.Ui.WishScreen
 
-
+//9주차
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -168,7 +168,7 @@ fun MainScreen() {
                 composable<AppDestination.Profit> {
 
                     ProfitScreen(
-                        onNavigateReProfit = {
+                        onEditClick = {
                             navController.navigate(AppDestination.ReProfit)
                         }
                     )
