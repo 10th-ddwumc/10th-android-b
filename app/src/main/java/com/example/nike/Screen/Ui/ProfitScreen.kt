@@ -29,6 +29,9 @@ import coil3.compose.AsyncImage
 import com.example.nike.Model.ProfitViewModel
 import com.example.nike.Screen.Ui.Data.UserData
 import com.example.nike.R
+import androidx.compose.foundation.clickable
+import androidx.compose.material3.AlertDialog
+
 @Composable
 fun ProfitScreen(
     onEditClick: () -> Unit,
@@ -171,7 +174,8 @@ fun ProfitScreen(
         Spacer(modifier = Modifier.height(25.dp))
 
         // 팔로잉 리스트
-        FollowingRow(users = fo
+        FollowingRow(users = followingList)
+
         Spacer(modifier = Modifier.weight(1f))
 
         Text(
@@ -284,6 +288,9 @@ fun FollowingPager(
 fun FollowingRow(
     users: List<UserData>
 ) {
+    var selectedUser by remember {
+        mutableStateOf<UserData?>(null)
+    }
 
     LazyRow(
         modifier = Modifier
@@ -291,16 +298,48 @@ fun FollowingRow(
             .padding(start = 20.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-
         items(users) { user ->
 
             AsyncImage(
                 model = user.avatar,
                 contentDescription = "팔로잉 이미지",
                 modifier = Modifier
-                    .size(90.dp),
+                    .size(90.dp)
+                    .clickable {
+                        selectedUser = user
+                    },
                 contentScale = ContentScale.Crop
             )
         }
+    }
+
+    // 이미지 확대 기능
+    if (selectedUser != null) {
+        AlertDialog(
+            onDismissRequest = {
+                selectedUser = null
+            },
+            title = {
+                Text("${selectedUser!!.first_name} ${selectedUser!!.last_name}")
+            },
+            text = {
+                AsyncImage(
+                    model = selectedUser!!.avatar,
+                    contentDescription = "확대 이미지",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(260.dp),
+                    contentScale = ContentScale.Crop
+                )
+            },
+            confirmButton = {
+                Text(
+                    text = "닫기",
+                    modifier = Modifier.clickable {
+                        selectedUser = null
+                    }
+                )
+            }
+        )
     }
 }
