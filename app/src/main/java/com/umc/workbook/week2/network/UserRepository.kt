@@ -12,7 +12,7 @@ class UserRepository @Inject constructor(
 ) : RemoteUserRepository {
 
     override suspend fun getUser(): Result<UserData> = try {
-        val response = service.getUser(1)
+        val response = service.getUser(1) //user_id 1로 고정됨
         if (response.isSuccessful) {
             val body = response.body()
             if (body?.data == null) Result.failure(RuntimeException("Response body is null"))
