@@ -1,5 +1,6 @@
 package com.umc.workbook.week2.di
 
+import com.umc.workbook.week2.BuildConfig
 import com.umc.workbook.week2.network.UserService
 import dagger.Module
 import dagger.Provides
@@ -17,19 +18,17 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val API_KEY = "reqres_9b160204291c4d13a1ff4ef5a677a03c"
-
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
         .addInterceptor(Interceptor { chain ->
             val request = chain.request().newBuilder()
-                .addHeader("x-api-key", API_KEY)
+                .addHeader("x-api-key", BuildConfig.REQRES_API_KEY)
                 .build()
             chain.proceed(request)
         })
         .addInterceptor(HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
+            level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
         })
         .connectTimeout(60, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)
