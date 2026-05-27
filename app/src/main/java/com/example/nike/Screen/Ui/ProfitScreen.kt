@@ -314,17 +314,20 @@ fun FollowingRow(
     }
 
     // 이미지 확대 기능
-    if (selectedUser != null) {
+    selectedUser?.let { user ->
+
         AlertDialog(
             onDismissRequest = {
                 selectedUser = null
             },
+
             title = {
-                Text("${selectedUser!!.first_name} ${selectedUser!!.last_name}")
+                Text("${user.first_name} ${user.last_name}")
             },
+
             text = {
                 AsyncImage(
-                    model = selectedUser!!.avatar,
+                    model = user.avatar,
                     contentDescription = "확대 이미지",
                     modifier = Modifier
                         .fillMaxWidth()
@@ -332,6 +335,7 @@ fun FollowingRow(
                     contentScale = ContentScale.Crop
                 )
             },
+
             confirmButton = {
                 Text(
                     text = "닫기",

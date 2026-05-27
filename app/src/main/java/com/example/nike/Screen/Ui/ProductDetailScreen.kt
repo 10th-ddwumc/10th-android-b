@@ -104,11 +104,10 @@ fun ProductDetailScreen(
         Spacer(modifier = Modifier.height(20.dp))
 
         Text(
-            text = "The Nike Everyday Plus Cushioned Socks bring comfort to your workout with extra cushioning under the heel and forefoot.",
+            text = product.explan ?: "상품 설명이 없습니다.",
             fontSize = 16.sp,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
-
         Spacer(modifier = Modifier.height(28.dp))
 
         Button(
